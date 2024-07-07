@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parallax</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .header,
+      .footer {
+        background-color: #001627;
+        color: white;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card {
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(
+          115deg,
+          #ddd3ff -22.47%,
+          #f3efff 41.78%,
+          #e5f4ff 100%
+        );
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 100px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+
+      .card.no-shadow {
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">This is Header</div>
+    <div>
+      <div class="card">card 1</div>
+      <div class="card">card 2</div>
+      <div class="card">card 3</div>
+      <div class="card">card 4</div>
+    </div>
+
+    <div class="footer">This is footer</div>
+
+    <script>
+      window.addEventListener("scroll", function () {
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          if (rect.top <= 100) {
+            card.classList.add("no-shadow");
+          } else {
+            card.classList.remove("no-shadow");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
